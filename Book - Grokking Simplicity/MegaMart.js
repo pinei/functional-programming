@@ -27,6 +27,8 @@
   The idea was to know if an order with the current cart and a new item would result in free shipping.
   Should answer the question "does this cart get free shipping?"
 
+  Our function now operates on the cart data structure instead of on a total and a price
+
 */
 
 // global variables
@@ -92,8 +94,13 @@ function update_shipping_icons() {
         var button = buy_buttons[i];
         var item = button.item;
 
+        // create a new cart that contains the item
+        var new_cart = add_item(shopping_cart,
+            item.name, 
+            item.price);
+
         // figure out if they get free shipping
-        if(gets_free_shipping(shopping_cart_total, item.price))
+        if(gets_free_shipping(new_cart))
             button.show_free_shipping_icon();
         else
             button.hide_free_shipping_icon();
@@ -101,9 +108,8 @@ function update_shipping_icons() {
 }
 
 // Business rule we wanted to be reusable
-function gets_free_shipping(total, item_price) {
-    // no implicit inputs or outputs
-    return item_price + total >= 20
+function gets_free_shipping(cart) {
+    return calc_total(cart) >= 20
 }
 
 function update_tax_dom() {
