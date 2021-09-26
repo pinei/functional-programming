@@ -37,7 +37,7 @@ function add_item_to_cart(name, price) {
         price: price
     });
     // update total because cart just changed
-    shopping_cart_total = calc_cart_total();
+    calc_cart_total();
 }
 
 function calc_total() {
@@ -52,8 +52,7 @@ function calc_total() {
 }
 
 function calc_cart_total() {
-    // call the new function
-    calc_total()
+    shopping_cart_total = calc_total()
 
     // update DOM to reflect new total
     set_cart_total_dom();
