@@ -24,6 +24,7 @@
   calc_total() was extracted from the action
   Need to convert our new function into a calculation.
   We have gotten rid of the two implicit outputs (using local `total` variable)
+  The last thing to do is convert the implicit input to an argument.
 */
 
 // global variables
