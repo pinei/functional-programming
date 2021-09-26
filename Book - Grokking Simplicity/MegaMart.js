@@ -37,6 +37,9 @@
   We’ve turned the implicit input into an explicit input as an argument `cart`.
   But we are still modifying the global array by calling .push(), which is an implicit output.
   We don’t want to modify it. Instead, we want to return a modified copy. 
+
+  That marks the end of the extraction. add_item() no longer has any implicit inputs or outputs.
+  That makes it a calculation.  
 */
 
 // global variables
