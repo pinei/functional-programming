@@ -21,10 +21,12 @@
   - Don’t assume the answer goes in the DOM.
   - Return the answer from the function.
 
-  The shipping department wants to use the code to determine which shipments are free. 
-  Extract a calculation for update_shipping_icons().
-
-  Business rule we just extracted with gets_free_shipping()
+  Functions that are actions will have implicit inputs and outputs.
+  Calculations have no implicit inputs or outputs by definition.
+  Shared variables (such as globals) are common implicit inputs and outputs.
+  Implicit inputs can often be replaced by arguments.
+  Implicit outputs can often be replaced by return values.
+  As we apply functional principles, we’ll find the ratio of code in actions to code in calculations shifting toward calculations.  
 */
 
 // global variables
@@ -39,9 +41,14 @@ function add_item_to_cart(name, price) {
     calc_cart_total();
 }
 
+function copy_array(array) {
+    // common way to copy an array in Javascript
+    return array.slice()
+}
+
 function add_item(cart, name, price) {
-    // make a copy and assign it to local variable
-    var new_cart = cart.slice()
+    // no implicit inputs or outputs
+    var new_cart = copy_array(cart)
 
     // modify copy
     new_cart.push({
@@ -54,6 +61,7 @@ function add_item(cart, name, price) {
 }
 
 function calc_total(cart) {
+    // no implicit inputs or outputs
     var total = 0;
 
     for(var i = 0; i < cart.length; i++) {
@@ -94,6 +102,7 @@ function update_shipping_icons() {
 
 // Business rule we wanted to be reusable
 function gets_free_shipping(total, item_price) {
+    // no implicit inputs or outputs
     return item_price + total >= 20
 }
 
@@ -104,5 +113,6 @@ function update_tax_dom() {
 
 // nice, clean tax calculation that the accountants can use
 function calc_tax(amount) {
+    // no implicit inputs or outputs
     return amount * 0.10
 }
