@@ -21,10 +21,8 @@
   - Don’t assume the answer goes in the DOM.
   - Return the answer from the function.
 
-  The accounting department wants to use our tax calculation, but it’s tied to a DOM update.
-  Extract the tax calculation from update_tax_dom().
-
-  calc_tax() is now a calculation, and it’s quite reusable
+  The shipping department wants to use the code to determine which shipments are free. 
+  Extract a calculation for update_shipping_icons().
 */
 
 // global variables
