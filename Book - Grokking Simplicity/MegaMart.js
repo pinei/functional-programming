@@ -31,11 +31,11 @@
   Follow the same process again, this time for add_item_to_cart().
   - New function add_item(name, price)
 
-  The extracted function is an action, because it modifies the global shopping_cart array.
+  The extracted function is an action, because it modifies the global shopping_cart array.
   Let’s turn it into a calculation.  
 
-  Reading a global variable is an input because data is entering the function. 
-  Modifying a global array is an output because data is leaving the function.
+  We’ve turned the implicit input into an explicit input as an argument `cart`.
+  But we are still modifying the global array by calling .push(), which is an implicit output.
 */
 
 // global variables
@@ -43,15 +43,15 @@ var shopping_cart = [];
 var shopping_cart_total = 0;
 
 function add_item_to_cart(name, price) {
-    // call the new function
-    add_item(name, price)
+    // pass global in as argument
+    add_item(shopping_cart, name, price)
 
     // update total because cart just changed
     calc_cart_total();
 }
 
-function add_item(name, price) {
-    shopping_cart.push({
+function add_item(cart, name, price) {
+    cart.push({
         name: name,
         price: price
     });
