@@ -22,6 +22,7 @@
   - Return the answer from the function.
 
   calc_total() was extracted from the action
+  Need to convert our new function into a calculation.
 */
 
 // global variables
