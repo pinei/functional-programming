@@ -36,6 +36,7 @@
 
   We’ve turned the implicit input into an explicit input as an argument `cart`.
   But we are still modifying the global array by calling .push(), which is an implicit output.
+  We don’t want to modify it. Instead, we want to return a modified copy. 
 */
 
 // global variables
@@ -43,18 +44,25 @@ var shopping_cart = [];
 var shopping_cart_total = 0;
 
 function add_item_to_cart(name, price) {
-    // pass global in as argument
-    add_item(shopping_cart, name, price)
+    // assign return value to global in original function
+    shopping_cart = add_item(shopping_cart, name, price)
 
     // update total because cart just changed
     calc_cart_total();
 }
 
 function add_item(cart, name, price) {
-    cart.push({
+    // make a copy and assign it to local variable
+    var new_cart = cart.slice()
+
+    // modify copy
+    new_cart.push({
         name: name,
         price: price
     });
+
+    // return copy
+    return new_cart
 }
 
 function calc_total(cart) {
