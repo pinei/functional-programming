@@ -29,6 +29,13 @@
   At this point, calc_total() is a calculation. We’ve successfully extracted a calculation.
 
   Follow the same process again, this time for add_item_to_cart().
+  - New function add_item(name, price)
+
+  The extracted function is an action, because it modifies the global shopping_cart array.
+  Let’s turn it into a calculation.  
+
+  Reading a global variable is an input because data is entering the function. 
+  Modifying a global array is an output because data is leaving the function.
 */
 
 // global variables
@@ -36,12 +43,18 @@ var shopping_cart = [];
 var shopping_cart_total = 0;
 
 function add_item_to_cart(name, price) {
+    // call the new function
+    add_item(name, price)
+
+    // update total because cart just changed
+    calc_cart_total();
+}
+
+function add_item(name, price) {
     shopping_cart.push({
         name: name,
         price: price
     });
-    // update total because cart just changed
-    calc_cart_total();
 }
 
 function calc_total(cart) {
