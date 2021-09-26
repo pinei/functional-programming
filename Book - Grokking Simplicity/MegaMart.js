@@ -21,10 +21,12 @@
   - Don’t assume the answer goes in the DOM.
   - Return the answer from the function.
 
-  calc_total() was extracted from the action
-  Need to convert our new function into a calculation.
-  We have gotten rid of the two implicit outputs (using local `total` variable)
-  The last thing to do is convert the implicit input to an argument.
+  Concerns are covered
+  - Separate business rules from the DOM updates (how to calculate cart total)
+  - Don’t assume the answer goes in the DOM (return the answer from the function)
+  - Get rid of global variables (cart_total() no longer relies on global variables)
+
+  At this point, calc_total() is a calculation. We’ve successfully extracted a calculation.
 */
 
 // global variables
@@ -40,11 +42,11 @@ function add_item_to_cart(name, price) {
     calc_cart_total();
 }
 
-function calc_total() {
+function calc_total(cart) {
     var total = 0;
 
-    for(var i = 0; i < shopping_cart.length; i++) {
-        var item = shopping_cart[i];
+    for(var i = 0; i < cart.length; i++) {
+        var item = cart[i];
         total += item.price;
     }
 
@@ -52,7 +54,8 @@ function calc_total() {
 }
 
 function calc_cart_total() {
-    shopping_cart_total = calc_total()
+    // we pass shopping_cart as an argument
+    shopping_cart_total = calc_total(shopping_cart)
 
     // update DOM to reflect new total
     set_cart_total_dom();
