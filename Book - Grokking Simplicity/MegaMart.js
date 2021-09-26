@@ -24,6 +24,8 @@
   Eliminating some of the inputs and outputs can improve the design of actions.
 
   Let’s apply the principle of minimal implicit inputs and outputs to update_shipping_icons().
+
+  We just applied a principle to this function and eliminated an implicit input.
 */
 
 // global variables
@@ -76,21 +78,21 @@ function calc_cart_total() {
     // update DOM to reflect new total
     set_cart_total_dom();
 
-    // update icons
-    update_shipping_icons()
+    // update icons (we pass the cart as an argument)
+    update_shipping_icons(shopping_cart)
 
     // update the tax on the page
     update_tax_dom()
 }
 
-function update_shipping_icons() {
+function update_shipping_icons(cart) {
     var buy_buttons = get_buy_buttons_dom();
     for (var i = 0; i < buy_buttons.length; i++) {
         var button = buy_buttons[i];
         var item = button.item;
 
         // create a new cart that contains the item
-        var new_cart = add_item(shopping_cart,
+        var new_cart = add_item(cart,
             item.name, 
             item.price);
 
