@@ -21,25 +21,8 @@
   - Don’t assume the answer goes in the DOM.
   - Return the answer from the function.
 
-  Concerns are covered
-  - Separate business rules from the DOM updates (how to calculate cart total)
-  - Don’t assume the answer goes in the DOM (return the answer from the function)
-  - Get rid of global variables (cart_total() no longer relies on global variables)
-
-  At this point, calc_total() is a calculation. We’ve successfully extracted a calculation.
-
-  Follow the same process again, this time for add_item_to_cart().
-  - New function add_item(name, price)
-
-  The extracted function is an action, because it modifies the global shopping_cart array.
-  Let’s turn it into a calculation.  
-
-  We’ve turned the implicit input into an explicit input as an argument `cart`.
-  But we are still modifying the global array by calling .push(), which is an implicit output.
-  We don’t want to modify it. Instead, we want to return a modified copy. 
-
-  That marks the end of the extraction. add_item() no longer has any implicit inputs or outputs.
-  That makes it a calculation.  
+  The accounting department wants to use our tax calculation, but it’s tied to a DOM update.
+  Extract the tax calculation from update_tax_dom().
 */
 
 // global variables
