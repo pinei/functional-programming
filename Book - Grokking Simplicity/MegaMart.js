@@ -23,6 +23,8 @@
 
   The accounting department wants to use our tax calculation, but it’s tied to a DOM update.
   Extract the tax calculation from update_tax_dom().
+
+  calc_tax() is now a calculation, and it’s quite reusable
 */
 
 // global variables
@@ -90,7 +92,12 @@ function update_shipping_icons() {
     }
 }
 
-// now need to calculate the amount of tax
 function update_tax_dom() {
-    set_tax_dom(shopping_cart_total * 0.10);
+    var tax = calc_tax(shopping_cart_total)
+    set_tax_dom(tax);
+}
+
+// nice, clean tax calculation that the accountants can use
+function calc_tax(amount) {
+    return amount * 0.10
 }
