@@ -20,6 +20,8 @@
   - Don’t depend on global variables.
   - Don’t assume the answer goes in the DOM.
   - Return the answer from the function.
+
+  calc_total() was extracted from the action
 */
 
 // global variables
@@ -35,13 +37,19 @@ function add_item_to_cart(name, price) {
     calc_cart_total();
 }
 
-function calc_cart_total() {
+function calc_total() {
     shopping_cart_total = 0;
 
-    for (var i = 0; i < shopping_cart.length; i++) {
+    for(var i = 0; i < shopping_cart.length; i++) {
         var item = shopping_cart[i];
         shopping_cart_total += item.price;
     }
+}
+
+function calc_cart_total() {
+    // call the new function
+    calc_total()
+
     // update DOM to reflect new total
     set_cart_total_dom();
 
