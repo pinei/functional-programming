@@ -27,6 +27,8 @@
   - Get rid of global variables (cart_total() no longer relies on global variables)
 
   At this point, calc_total() is a calculation. We’ve successfully extracted a calculation.
+
+  Follow the same process again, this time for add_item_to_cart().
 */
 
 // global variables
