@@ -23,6 +23,7 @@
 
   calc_total() was extracted from the action
   Need to convert our new function into a calculation.
+  We have gotten rid of the two implicit outputs (using local `total` variable)
 */
 
 // global variables
@@ -35,16 +36,18 @@ function add_item_to_cart(name, price) {
         price: price
     });
     // update total because cart just changed
-    calc_cart_total();
+    shopping_cart_total = calc_cart_total();
 }
 
 function calc_total() {
-    shopping_cart_total = 0;
+    var total = 0;
 
     for(var i = 0; i < shopping_cart.length; i++) {
         var item = shopping_cart[i];
-        shopping_cart_total += item.price;
+        total += item.price;
     }
+
+    return total
 }
 
 function calc_cart_total() {
