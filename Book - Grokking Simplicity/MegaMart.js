@@ -8,20 +8,18 @@
 
   (See modifications through git history)
 
-<<<<<<< HEAD
   Status: The code contains business rules that are not easy to test
-=======
+
   The code contains business rules that are not easy to test
->>>>>>> ffe25b1 (MegaMart.js versão 0)
 
   In order to test it easily:
   - Separate the business rules from the DOM updates.
   - Get rid of those global variables!
-<<<<<<< HEAD
-=======
 
   We need to make it more reusable
->>>>>>> ffe25b1 (MegaMart.js versão 0)
+  - Don’t depend on global variables.
+  - Don’t assume the answer goes in the DOM.
+  - Return the answer from the function.
 */
 
 // global variables
