@@ -21,12 +21,7 @@
   - Don’t assume the answer goes in the DOM.
   - Return the answer from the function.
 
-  Functions that are actions will have implicit inputs and outputs.
-  Calculations have no implicit inputs or outputs by definition.
-  Shared variables (such as globals) are common implicit inputs and outputs.
-  Implicit inputs can often be replaced by arguments.
-  Implicit outputs can often be replaced by return values.
-  As we apply functional principles, we’ll find the ratio of code in actions to code in calculations shifting toward calculations.  
+  Eliminating some of the inputs and outputs can improve the design of actions.
 */
 
 // global variables
