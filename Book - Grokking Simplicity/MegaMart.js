@@ -34,8 +34,11 @@ function add_item_to_cart(name, price) {
     // assign return value to global in original function
     shopping_cart = add_item(shopping_cart, name, price)
 
-    // update total because cart just changed
-    calc_cart_total(shopping_cart);
+    // Gotten rid of calc_cart_total()
+    var total = calc_total(shopping_cart)
+    set_cart_total_dom(total);
+    update_shipping_icons(shopping_cart)
+    update_tax_dom(total)
 }
 
 function copy_array(array) {
@@ -67,20 +70,6 @@ function calc_total(cart) {
     }
 
     return total
-}
-
-function calc_cart_total(cart) {
-    // we pass shopping_cart as an argument
-    var total = calc_total(cart)
-
-    // update DOM to reflect new total
-    set_cart_total_dom(total);
-
-    // update icons (we pass the cart as an argument)
-    update_shipping_icons(cart)
-
-    // update the tax on the page
-    update_tax_dom(total)
 }
 
 function update_shipping_icons(cart) {
