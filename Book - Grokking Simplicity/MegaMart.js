@@ -23,6 +23,8 @@
 
   The shipping department wants to use the code to determine which shipments are free. 
   Extract a calculation for update_shipping_icons().
+
+  Business rule we just extracted with gets_free_shipping()
 */
 
 // global variables
@@ -82,12 +84,17 @@ function update_shipping_icons() {
         var button = buy_buttons[i];
         var item = button.item;
 
-        // figure out if they get free shipping (business rule we want to be reusable)
-        if(item.price + shopping_cart_total >= 20)
+        // figure out if they get free shipping
+        if(gets_free_shipping(shopping_cart_total, item.price))
             button.show_free_shipping_icon();
         else
             button.hide_free_shipping_icon();
     }
+}
+
+// Business rule we wanted to be reusable
+function gets_free_shipping(total, item_price) {
+    return item_price + total >= 20
 }
 
 function update_tax_dom() {
