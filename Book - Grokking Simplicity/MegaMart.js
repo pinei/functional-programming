@@ -21,10 +21,8 @@
   - Don’t assume the answer goes in the DOM.
   - Return the answer from the function.
 
-  Eliminating some of the inputs and outputs can improve the design of actions.
-
-  We converted many global variable reads to arguments and gotten rid of `shopping_cart_total`
-
+  Decreased the number of lines in actions.
+  calc_cart_total() is a superfluous function.
 */
 
 // global variables
