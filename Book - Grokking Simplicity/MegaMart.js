@@ -23,12 +23,7 @@
 
   Eliminating some of the inputs and outputs can improve the design of actions.
 
-  The function gets_free_shipping() is not quite right.
-  The idea was to know if an order with the current cart and a new item would result in free shipping.
-  Should answer the question "does this cart get free shipping?"
-
-  Our function now operates on the cart data structure instead of on a total and a price
-
+  Let’s apply the principle of minimal implicit inputs and outputs to update_shipping_icons().
 */
 
 // global variables
