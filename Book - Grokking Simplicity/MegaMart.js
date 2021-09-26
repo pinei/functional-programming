@@ -23,21 +23,21 @@
 
   Eliminating some of the inputs and outputs can improve the design of actions.
 
-  Let’s apply the principle of minimal implicit inputs and outputs to update_shipping_icons().
+  We converted many global variable reads to arguments and gotten rid of `shopping_cart_total`
 
-  We just applied a principle to this function and eliminated an implicit input.
 */
 
 // global variables
 var shopping_cart = [];
 var shopping_cart_total = 0;
 
+// the only place we read and write shopping_cart global
 function add_item_to_cart(name, price) {
     // assign return value to global in original function
     shopping_cart = add_item(shopping_cart, name, price)
 
     // update total because cart just changed
-    calc_cart_total();
+    calc_cart_total(shopping_cart);
 }
 
 function copy_array(array) {
@@ -71,18 +71,18 @@ function calc_total(cart) {
     return total
 }
 
-function calc_cart_total() {
+function calc_cart_total(cart) {
     // we pass shopping_cart as an argument
-    shopping_cart_total = calc_total(shopping_cart)
+    var total = calc_total(cart)
 
     // update DOM to reflect new total
-    set_cart_total_dom();
+    set_cart_total_dom(total);
 
     // update icons (we pass the cart as an argument)
-    update_shipping_icons(shopping_cart)
+    update_shipping_icons(cart)
 
     // update the tax on the page
-    update_tax_dom()
+    update_tax_dom(total)
 }
 
 function update_shipping_icons(cart) {
@@ -109,8 +109,8 @@ function gets_free_shipping(cart) {
     return calc_total(cart) >= 20
 }
 
-function update_tax_dom() {
-    var tax = calc_tax(shopping_cart_total)
+function update_tax_dom(total) {
+    var tax = calc_tax(total)
     set_tax_dom(tax);
 }
 
@@ -118,4 +118,9 @@ function update_tax_dom() {
 function calc_tax(amount) {
     // no implicit inputs or outputs
     return amount * 0.10
+}
+
+function set_cart_total_dom(total) {
+    // We haven’t seen the code for this function
+    // But the frontend team says we can add the argument
 }
